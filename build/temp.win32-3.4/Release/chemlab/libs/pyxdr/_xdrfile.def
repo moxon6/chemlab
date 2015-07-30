@@ -1,0 +1,3 @@
+LIBRARY _xdrfile.pyd
+EXPORTS
+PyInit__xdrfile

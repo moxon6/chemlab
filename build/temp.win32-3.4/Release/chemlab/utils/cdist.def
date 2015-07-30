@@ -1,0 +1,3 @@
+LIBRARY cdist.pyd
+EXPORTS
+PyInit_cdist

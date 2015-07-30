@@ -1,0 +1,3 @@
+LIBRARY ckdtree.pyd
+EXPORTS
+PyInit_ckdtree

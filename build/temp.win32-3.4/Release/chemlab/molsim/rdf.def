@@ -1,0 +1,3 @@
+LIBRARY rdf.pyd
+EXPORTS
+PyInit_rdf
