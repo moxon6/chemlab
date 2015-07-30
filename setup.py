@@ -23,7 +23,6 @@ setup(
     name = "chemlab",
     version = "0.4.1",
     packages = find_packages(),
-    cmdclass = {'build_ext': build_ext},
     ext_modules = ext_modules,
     include_dirs = [np.get_include()],
     package_data = {'': ['distribute_setup.py', '*.rst', '*.txt'],
