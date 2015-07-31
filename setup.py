@@ -1,7 +1,6 @@
 from distribute_setup import use_setuptools
 use_setuptools()
 from setuptools import setup, find_packages, Extension
-from Cython.Distutils import build_ext
 import numpy as np
 
 ext_modules = [Extension('chemlab.libs.ckdtree', ['chemlab/libs/ckdtree.pyx']),
@@ -22,7 +21,6 @@ setup(
     name = "chemlab",
     version = "0.2",
     packages = find_packages(),
-    cmdclass = {'build_ext': build_ext},
     ext_modules = ext_modules,
     include_dirs = [np.get_include()],
     package_data = {'': ['distribute_setup.py', '*.rst', '*.txt'],
