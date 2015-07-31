@@ -1,19 +1,32 @@
 from distribute_setup import use_setuptools
 use_setuptools()
 from setuptools import setup, find_packages, Extension
+from Cython.Distutils import build_ext
 import numpy as np
 
-ext_modules = []
+ext_modules = [Extension('chemlab.libs.ckdtree', ['chemlab/libs/ckdtree.pyx']),
+               Extension('chemlab.utils.celllinkedlist',
+                         ['chemlab/utils/celllinkedlist.pyx']),
+               Extension('chemlab.utils.cdist',
+                         ['chemlab/utils/cdist.pyx']),
+               Extension('chemlab.graphics.renderers.utils', 
+                         ['chemlab/graphics/renderers/utils.pyx']),
+               Extension('chemlab.libs.pyxdr._xdrfile',
+                          ["chemlab/libs/pyxdr/xdrfile.c",
+                           "chemlab/libs/pyxdr/xdrfile_trr.c", 
+                           "chemlab/libs/pyxdr/xdrfile_xtc.c",
+                           "chemlab/libs/pyxdr/_xdrfile.pyx"],
+                            include_dirs=['./chemlab/libs/'])]
 
 setup(
     name = "chemlab",
-    version = "0.4.1",
+    version = "0.2",
     packages = find_packages(),
+    cmdclass = {'build_ext': build_ext},
     ext_modules = ext_modules,
     include_dirs = [np.get_include()],
     package_data = {'': ['distribute_setup.py', '*.rst', '*.txt'],
                     'chemlab.graphics.renderers.shaders': ['*.vert', '*.frag'],
-                    'chemlab.graphics.postprocessing.shaders': ['*.vert', '*.frag'],
                     'chemlab.resources' : ["*"],
                     'chemlab.db.localdb.data' : ['*'],
                     'chemlab.db.localdb.molecule' : ['*'],
@@ -46,7 +59,7 @@ setup(
                    'Topic :: Scientific/Engineering :: Physics',
                    'Topic :: Multimedia :: Graphics :: Viewers',
                    'Programming Language :: Python :: 2.7'],
-    license = "LGPL if parts using PyQt (chemlab.graphics and chemlab.mviewer packages), GPL3 if the PyQt parts are included.",
+    license = "GPL3",
     keywords = "chemistry molecular_viewer",
     url = "https://chemlab.github.com/chemlab"
 )
