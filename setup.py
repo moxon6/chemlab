@@ -3,21 +3,7 @@ use_setuptools()
 from setuptools import setup, find_packages, Extension
 import numpy as np
 
-ext_modules = [Extension('chemlab.libs.ckdtree', ['chemlab/libs/ckdtree.pyx']),
-               Extension('chemlab.utils.celllinkedlist',
-                         ['chemlab/utils/celllinkedlist.pyx']),
-               Extension('chemlab.utils.cdist',
-                         ['chemlab/utils/cdist.pyx']),
-               Extension('chemlab.molsim.rdf', 
-                         ['chemlab/molsim/rdf.pyx']),
-               Extension('chemlab.graphics.renderers.utils', 
-                         ['chemlab/graphics/renderers/utils.pyx']),
-               Extension('chemlab.libs.pyxdr._xdrfile',
-                          ["chemlab/libs/pyxdr/xdrfile.c",
-                           "chemlab/libs/pyxdr/xdrfile_trr.c", 
-                           "chemlab/libs/pyxdr/xdrfile_xtc.c",
-                           "chemlab/libs/pyxdr/_xdrfile.pyx"],
-                            include_dirs=['./chemlab/libs/'])]
+ext_modules = []
 
 setup(
     name = "chemlab",
